@@ -32,7 +32,7 @@ public class HashTagTokenizer {
             return;
         }
         
-		hashtag.toLowerCase();
+		hashtag=hashtag.toLowerCase();
 		int N = hashtag.length();
 
         for (int i = 1; i <= N; i++) {

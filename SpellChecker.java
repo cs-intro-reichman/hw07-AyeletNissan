@@ -5,6 +5,9 @@ public class SpellChecker {
 	public static void main(String[] args) {
 		String word = args[0];
 		int threshold = Integer.parseInt(args[1]);
+		//String word2 = args[1];
+
+		//System.out.println(levenshtein(word, word2));
 		String[] dictionary = readDictionary("dictionary.txt");
 		String correction = spellChecker(word, threshold, dictionary);
 		System.out.println(correction);
@@ -18,15 +21,16 @@ public class SpellChecker {
 	}
 
 	public static int levenshtein(String word1, String word2) {
-		word1.toLowerCase();
-		word2.toLowerCase();
+		word1=word1.toLowerCase();
+		word2=word2.toLowerCase();
 		if(word1.length()==0) return word2.length();
 		if(word2.length()==0) return word1.length();
+
 		if(head(word1)== head(word2)){
 			return levenshtein(tail(word1), tail(word2));
 		} 
-		return 1 + Math.min(levenshtein(tail(word1), word2),Math.min(levenshtein(word1, tail(word2)), levenshtein(tail(word1), tail(word2))));
 
+		return 1 + Math.min(levenshtein(tail(word1), word2),Math.min(levenshtein(word1, tail(word2)), levenshtein(tail(word1), tail(word2))));
 	}
 
 	public static String[] readDictionary(String fileName) {
